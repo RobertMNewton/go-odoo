@@ -2,16 +2,16 @@ package odoo
 
 // ResCountryGroup represents res.country.group model.
 type ResCountryGroup struct {
-	LastUpdate   *Time     `xmlrpc:"__last_update,omitempty"`
-	CountryIds   *Relation `xmlrpc:"country_ids,omitempty"`
-	CreateDate   *Time     `xmlrpc:"create_date,omitempty"`
-	CreateUid    *Many2One `xmlrpc:"create_uid,omitempty"`
-	DisplayName  *String   `xmlrpc:"display_name,omitempty"`
-	Id           *Int      `xmlrpc:"id,omitempty"`
-	Name         *String   `xmlrpc:"name,omitempty"`
-	PricelistIds *Relation `xmlrpc:"pricelist_ids,omitempty"`
-	WriteDate    *Time     `xmlrpc:"write_date,omitempty"`
-	WriteUid     *Many2One `xmlrpc:"write_uid,omitempty"`
+	CountryIds      *Relation `xmlrpc:"country_ids,omitempty"`
+	CreateDate      *Time     `xmlrpc:"create_date,omitempty"`
+	CreateUid       *Many2One `xmlrpc:"create_uid,omitempty"`
+	DisplayName     *String   `xmlrpc:"display_name,omitempty"`
+	ExcludeStateIds *Relation `xmlrpc:"exclude_state_ids,omitempty"`
+	Id              *Int      `xmlrpc:"id,omitempty"`
+	Name            *String   `xmlrpc:"name,omitempty"`
+	PricelistIds    *Relation `xmlrpc:"pricelist_ids,omitempty"`
+	WriteDate       *Time     `xmlrpc:"write_date,omitempty"`
+	WriteUid        *Many2One `xmlrpc:"write_uid,omitempty"`
 }
 
 // ResCountryGroups represents array of res.country.group model.
@@ -37,7 +37,7 @@ func (c *Client) CreateResCountryGroup(rcg *ResCountryGroup) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateResCountryGroups creates a new res.country.group model and returns its id.
+// CreateResCountryGroup creates a new res.country.group model and returns its id.
 func (c *Client) CreateResCountryGroups(rcgs []*ResCountryGroup) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range rcgs {

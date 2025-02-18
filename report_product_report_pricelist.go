@@ -2,7 +2,6 @@ package odoo
 
 // ReportProductReportPricelist represents report.product.report_pricelist model.
 type ReportProductReportPricelist struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateReportProductReportPricelist(rpr *ReportProductReportPric
 	return ids[0], nil
 }
 
-// CreateReportProductReportPricelists creates a new report.product.report_pricelist model and returns its id.
+// CreateReportProductReportPricelist creates a new report.product.report_pricelist model and returns its id.
 func (c *Client) CreateReportProductReportPricelists(rprs []*ReportProductReportPricelist) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range rprs {

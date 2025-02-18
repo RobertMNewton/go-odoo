@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldQweb represents ir.qweb.field.qweb model.
 type IrQwebFieldQweb struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldQweb(iqfq *IrQwebFieldQweb) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldQwebs creates a new ir.qweb.field.qweb model and returns its id.
+// CreateIrQwebFieldQweb creates a new ir.qweb.field.qweb model and returns its id.
 func (c *Client) CreateIrQwebFieldQwebs(iqfqs []*IrQwebFieldQweb) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqfqs {

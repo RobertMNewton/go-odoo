@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldFloatTime represents ir.qweb.field.float_time model.
 type IrQwebFieldFloatTime struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldFloatTime(iqff *IrQwebFieldFloatTime) (int64, 
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldFloatTimes creates a new ir.qweb.field.float_time model and returns its id.
+// CreateIrQwebFieldFloatTime creates a new ir.qweb.field.float_time model and returns its id.
 func (c *Client) CreateIrQwebFieldFloatTimes(iqffs []*IrQwebFieldFloatTime) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqffs {

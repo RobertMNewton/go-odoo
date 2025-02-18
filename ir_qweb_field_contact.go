@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldContact represents ir.qweb.field.contact model.
 type IrQwebFieldContact struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldContact(iqfc *IrQwebFieldContact) (int64, erro
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldContacts creates a new ir.qweb.field.contact model and returns its id.
+// CreateIrQwebFieldContact creates a new ir.qweb.field.contact model and returns its id.
 func (c *Client) CreateIrQwebFieldContacts(iqfcs []*IrQwebFieldContact) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqfcs {

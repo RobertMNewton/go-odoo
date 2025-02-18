@@ -2,17 +2,21 @@ package odoo
 
 // BaseModuleUninstall represents base.module.uninstall model.
 type BaseModuleUninstall struct {
-	LastUpdate  *Time     `xmlrpc:"__last_update,omitempty"`
-	CreateDate  *Time     `xmlrpc:"create_date,omitempty"`
-	CreateUid   *Many2One `xmlrpc:"create_uid,omitempty"`
-	DisplayName *String   `xmlrpc:"display_name,omitempty"`
-	Id          *Int      `xmlrpc:"id,omitempty"`
-	ModelIds    *Relation `xmlrpc:"model_ids,omitempty"`
-	ModuleId    *Many2One `xmlrpc:"module_id,omitempty"`
-	ModuleIds   *Relation `xmlrpc:"module_ids,omitempty"`
-	ShowAll     *Bool     `xmlrpc:"show_all,omitempty"`
-	WriteDate   *Time     `xmlrpc:"write_date,omitempty"`
-	WriteUid    *Many2One `xmlrpc:"write_uid,omitempty"`
+	CreateDate    *Time     `xmlrpc:"create_date,omitempty"`
+	CreateUid     *Many2One `xmlrpc:"create_uid,omitempty"`
+	CustomFields  *Int      `xmlrpc:"custom_fields,omitempty"`
+	CustomModels  *Int      `xmlrpc:"custom_models,omitempty"`
+	CustomReports *Int      `xmlrpc:"custom_reports,omitempty"`
+	CustomViews   *Int      `xmlrpc:"custom_views,omitempty"`
+	DisplayName   *String   `xmlrpc:"display_name,omitempty"`
+	Id            *Int      `xmlrpc:"id,omitempty"`
+	IsStudio      *Bool     `xmlrpc:"is_studio,omitempty"`
+	ModelIds      *Relation `xmlrpc:"model_ids,omitempty"`
+	ModuleId      *Many2One `xmlrpc:"module_id,omitempty"`
+	ModuleIds     *Relation `xmlrpc:"module_ids,omitempty"`
+	ShowAll       *Bool     `xmlrpc:"show_all,omitempty"`
+	WriteDate     *Time     `xmlrpc:"write_date,omitempty"`
+	WriteUid      *Many2One `xmlrpc:"write_uid,omitempty"`
 }
 
 // BaseModuleUninstalls represents array of base.module.uninstall model.
@@ -38,7 +42,7 @@ func (c *Client) CreateBaseModuleUninstall(bmu *BaseModuleUninstall) (int64, err
 	return ids[0], nil
 }
 
-// CreateBaseModuleUninstalls creates a new base.module.uninstall model and returns its id.
+// CreateBaseModuleUninstall creates a new base.module.uninstall model and returns its id.
 func (c *Client) CreateBaseModuleUninstalls(bmus []*BaseModuleUninstall) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range bmus {

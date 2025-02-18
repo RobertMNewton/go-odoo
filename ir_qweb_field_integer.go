@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldInteger represents ir.qweb.field.integer model.
 type IrQwebFieldInteger struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldInteger(iqfi *IrQwebFieldInteger) (int64, erro
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldIntegers creates a new ir.qweb.field.integer model and returns its id.
+// CreateIrQwebFieldInteger creates a new ir.qweb.field.integer model and returns its id.
 func (c *Client) CreateIrQwebFieldIntegers(iqfis []*IrQwebFieldInteger) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqfis {

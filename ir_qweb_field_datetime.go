@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldDatetime represents ir.qweb.field.datetime model.
 type IrQwebFieldDatetime struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldDatetime(iqfd *IrQwebFieldDatetime) (int64, er
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldDatetimes creates a new ir.qweb.field.datetime model and returns its id.
+// CreateIrQwebFieldDatetime creates a new ir.qweb.field.datetime model and returns its id.
 func (c *Client) CreateIrQwebFieldDatetimes(iqfds []*IrQwebFieldDatetime) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqfds {

@@ -2,7 +2,6 @@ package odoo
 
 // IrQwebFieldSelection represents ir.qweb.field.selection model.
 type IrQwebFieldSelection struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrQwebFieldSelection(iqfs *IrQwebFieldSelection) (int64, 
 	return ids[0], nil
 }
 
-// CreateIrQwebFieldSelections creates a new ir.qweb.field.selection model and returns its id.
+// CreateIrQwebFieldSelection creates a new ir.qweb.field.selection model and returns its id.
 func (c *Client) CreateIrQwebFieldSelections(iqfss []*IrQwebFieldSelection) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range iqfss {

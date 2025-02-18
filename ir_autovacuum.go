@@ -2,7 +2,6 @@ package odoo
 
 // IrAutovacuum represents ir.autovacuum model.
 type IrAutovacuum struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrAutovacuum(ia *IrAutovacuum) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateIrAutovacuums creates a new ir.autovacuum model and returns its id.
+// CreateIrAutovacuum creates a new ir.autovacuum model and returns its id.
 func (c *Client) CreateIrAutovacuums(ias []*IrAutovacuum) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range ias {

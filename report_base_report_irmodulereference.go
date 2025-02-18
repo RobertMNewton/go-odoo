@@ -2,7 +2,6 @@ package odoo
 
 // ReportBaseReportIrmodulereference represents report.base.report_irmodulereference model.
 type ReportBaseReportIrmodulereference struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateReportBaseReportIrmodulereference(rbr *ReportBaseReportIr
 	return ids[0], nil
 }
 
-// CreateReportBaseReportIrmodulereferences creates a new report.base.report_irmodulereference model and returns its id.
+// CreateReportBaseReportIrmodulereference creates a new report.base.report_irmodulereference model and returns its id.
 func (c *Client) CreateReportBaseReportIrmodulereferences(rbrs []*ReportBaseReportIrmodulereference) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range rbrs {

@@ -2,43 +2,45 @@ package odoo
 
 // AccountBankStatement represents account.bank.statement model.
 type AccountBankStatement struct {
-	LastUpdate               *Time      `xmlrpc:"__last_update,omitempty"`
-	AllLinesReconciled       *Bool      `xmlrpc:"all_lines_reconciled,omitempty"`
+	AttachmentIds            *Relation  `xmlrpc:"attachment_ids,omitempty"`
 	BalanceEnd               *Float     `xmlrpc:"balance_end,omitempty"`
 	BalanceEndReal           *Float     `xmlrpc:"balance_end_real,omitempty"`
 	BalanceStart             *Float     `xmlrpc:"balance_start,omitempty"`
-	CashboxEndId             *Many2One  `xmlrpc:"cashbox_end_id,omitempty"`
-	CashboxStartId           *Many2One  `xmlrpc:"cashbox_start_id,omitempty"`
 	CompanyId                *Many2One  `xmlrpc:"company_id,omitempty"`
 	CreateDate               *Time      `xmlrpc:"create_date,omitempty"`
 	CreateUid                *Many2One  `xmlrpc:"create_uid,omitempty"`
 	CurrencyId               *Many2One  `xmlrpc:"currency_id,omitempty"`
 	Date                     *Time      `xmlrpc:"date,omitempty"`
-	DateDone                 *Time      `xmlrpc:"date_done,omitempty"`
-	Difference               *Float     `xmlrpc:"difference,omitempty"`
 	DisplayName              *String    `xmlrpc:"display_name,omitempty"`
+	ExtractCanShowSendButton *Bool      `xmlrpc:"extract_can_show_send_button,omitempty"`
+	ExtractDocumentUuid      *String    `xmlrpc:"extract_document_uuid,omitempty"`
+	ExtractErrorMessage      *String    `xmlrpc:"extract_error_message,omitempty"`
+	ExtractState             *Selection `xmlrpc:"extract_state,omitempty"`
+	ExtractStateProcessed    *Bool      `xmlrpc:"extract_state_processed,omitempty"`
+	ExtractStatus            *String    `xmlrpc:"extract_status,omitempty"`
+	FirstLineIndex           *String    `xmlrpc:"first_line_index,omitempty"`
+	HasMessage               *Bool      `xmlrpc:"has_message,omitempty"`
 	Id                       *Int       `xmlrpc:"id,omitempty"`
-	IsDifferenceZero         *Bool      `xmlrpc:"is_difference_zero,omitempty"`
+	IsComplete               *Bool      `xmlrpc:"is_complete,omitempty"`
+	IsInExtractableState     *Bool      `xmlrpc:"is_in_extractable_state,omitempty"`
+	IsValid                  *Bool      `xmlrpc:"is_valid,omitempty"`
 	JournalId                *Many2One  `xmlrpc:"journal_id,omitempty"`
-	JournalType              *Selection `xmlrpc:"journal_type,omitempty"`
 	LineIds                  *Relation  `xmlrpc:"line_ids,omitempty"`
-	MessageChannelIds        *Relation  `xmlrpc:"message_channel_ids,omitempty"`
+	MessageAttachmentCount   *Int       `xmlrpc:"message_attachment_count,omitempty"`
 	MessageFollowerIds       *Relation  `xmlrpc:"message_follower_ids,omitempty"`
+	MessageHasError          *Bool      `xmlrpc:"message_has_error,omitempty"`
+	MessageHasErrorCounter   *Int       `xmlrpc:"message_has_error_counter,omitempty"`
+	MessageHasSmsError       *Bool      `xmlrpc:"message_has_sms_error,omitempty"`
 	MessageIds               *Relation  `xmlrpc:"message_ids,omitempty"`
 	MessageIsFollower        *Bool      `xmlrpc:"message_is_follower,omitempty"`
-	MessageLastPost          *Time      `xmlrpc:"message_last_post,omitempty"`
+	MessageMainAttachmentId  *Many2One  `xmlrpc:"message_main_attachment_id,omitempty"`
 	MessageNeedaction        *Bool      `xmlrpc:"message_needaction,omitempty"`
 	MessageNeedactionCounter *Int       `xmlrpc:"message_needaction_counter,omitempty"`
 	MessagePartnerIds        *Relation  `xmlrpc:"message_partner_ids,omitempty"`
-	MessageUnread            *Bool      `xmlrpc:"message_unread,omitempty"`
-	MessageUnreadCounter     *Int       `xmlrpc:"message_unread_counter,omitempty"`
-	MoveLineCount            *Int       `xmlrpc:"move_line_count,omitempty"`
-	MoveLineIds              *Relation  `xmlrpc:"move_line_ids,omitempty"`
 	Name                     *String    `xmlrpc:"name,omitempty"`
+	ProblemDescription       *String    `xmlrpc:"problem_description,omitempty"`
+	RatingIds                *Relation  `xmlrpc:"rating_ids,omitempty"`
 	Reference                *String    `xmlrpc:"reference,omitempty"`
-	State                    *Selection `xmlrpc:"state,omitempty"`
-	TotalEntryEncoding       *Float     `xmlrpc:"total_entry_encoding,omitempty"`
-	UserId                   *Many2One  `xmlrpc:"user_id,omitempty"`
 	WebsiteMessageIds        *Relation  `xmlrpc:"website_message_ids,omitempty"`
 	WriteDate                *Time      `xmlrpc:"write_date,omitempty"`
 	WriteUid                 *Many2One  `xmlrpc:"write_uid,omitempty"`
@@ -67,7 +69,7 @@ func (c *Client) CreateAccountBankStatement(abs *AccountBankStatement) (int64, e
 	return ids[0], nil
 }
 
-// CreateAccountBankStatements creates a new account.bank.statement model and returns its id.
+// CreateAccountBankStatement creates a new account.bank.statement model and returns its id.
 func (c *Client) CreateAccountBankStatements(abss []*AccountBankStatement) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range abss {

@@ -2,20 +2,16 @@ package odoo
 
 // ProductUom represents product.uom model.
 type ProductUom struct {
-	LastUpdate  *Time      `xmlrpc:"__last_update,omitempty"`
-	Active      *Bool      `xmlrpc:"active,omitempty"`
-	CategoryId  *Many2One  `xmlrpc:"category_id,omitempty"`
-	CreateDate  *Time      `xmlrpc:"create_date,omitempty"`
-	CreateUid   *Many2One  `xmlrpc:"create_uid,omitempty"`
-	DisplayName *String    `xmlrpc:"display_name,omitempty"`
-	Factor      *Float     `xmlrpc:"factor,omitempty"`
-	FactorInv   *Float     `xmlrpc:"factor_inv,omitempty"`
-	Id          *Int       `xmlrpc:"id,omitempty"`
-	Name        *String    `xmlrpc:"name,omitempty"`
-	Rounding    *Float     `xmlrpc:"rounding,omitempty"`
-	UomType     *Selection `xmlrpc:"uom_type,omitempty"`
-	WriteDate   *Time      `xmlrpc:"write_date,omitempty"`
-	WriteUid    *Many2One  `xmlrpc:"write_uid,omitempty"`
+	Barcode     *String   `xmlrpc:"barcode,omitempty"`
+	CompanyId   *Many2One `xmlrpc:"company_id,omitempty"`
+	CreateDate  *Time     `xmlrpc:"create_date,omitempty"`
+	CreateUid   *Many2One `xmlrpc:"create_uid,omitempty"`
+	DisplayName *String   `xmlrpc:"display_name,omitempty"`
+	Id          *Int      `xmlrpc:"id,omitempty"`
+	ProductId   *Many2One `xmlrpc:"product_id,omitempty"`
+	UomId       *Many2One `xmlrpc:"uom_id,omitempty"`
+	WriteDate   *Time     `xmlrpc:"write_date,omitempty"`
+	WriteUid    *Many2One `xmlrpc:"write_uid,omitempty"`
 }
 
 // ProductUoms represents array of product.uom model.
@@ -41,7 +37,7 @@ func (c *Client) CreateProductUom(pu *ProductUom) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateProductUoms creates a new product.uom model and returns its id.
+// CreateProductUom creates a new product.uom model and returns its id.
 func (c *Client) CreateProductUoms(pus []*ProductUom) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range pus {

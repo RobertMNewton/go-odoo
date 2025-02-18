@@ -2,14 +2,17 @@ package odoo
 
 // StockBackorderConfirmation represents stock.backorder.confirmation model.
 type StockBackorderConfirmation struct {
-	LastUpdate  *Time     `xmlrpc:"__last_update,omitempty"`
-	CreateDate  *Time     `xmlrpc:"create_date,omitempty"`
-	CreateUid   *Many2One `xmlrpc:"create_uid,omitempty"`
-	DisplayName *String   `xmlrpc:"display_name,omitempty"`
-	Id          *Int      `xmlrpc:"id,omitempty"`
-	PickIds     *Relation `xmlrpc:"pick_ids,omitempty"`
-	WriteDate   *Time     `xmlrpc:"write_date,omitempty"`
-	WriteUid    *Many2One `xmlrpc:"write_uid,omitempty"`
+	BackorderConfirmationLineIds *Relation `xmlrpc:"backorder_confirmation_line_ids,omitempty"`
+	CreateDate                   *Time     `xmlrpc:"create_date,omitempty"`
+	CreateUid                    *Many2One `xmlrpc:"create_uid,omitempty"`
+	DisplayName                  *String   `xmlrpc:"display_name,omitempty"`
+	EmptyMoveCount               *Int      `xmlrpc:"empty_move_count,omitempty"`
+	Id                           *Int      `xmlrpc:"id,omitempty"`
+	PartialMoveCount             *Int      `xmlrpc:"partial_move_count,omitempty"`
+	PickIds                      *Relation `xmlrpc:"pick_ids,omitempty"`
+	ShowTransfers                *Bool     `xmlrpc:"show_transfers,omitempty"`
+	WriteDate                    *Time     `xmlrpc:"write_date,omitempty"`
+	WriteUid                     *Many2One `xmlrpc:"write_uid,omitempty"`
 }
 
 // StockBackorderConfirmations represents array of stock.backorder.confirmation model.
@@ -35,7 +38,7 @@ func (c *Client) CreateStockBackorderConfirmation(sbc *StockBackorderConfirmatio
 	return ids[0], nil
 }
 
-// CreateStockBackorderConfirmations creates a new stock.backorder.confirmation model and returns its id.
+// CreateStockBackorderConfirmation creates a new stock.backorder.confirmation model and returns its id.
 func (c *Client) CreateStockBackorderConfirmations(sbcs []*StockBackorderConfirmation) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range sbcs {

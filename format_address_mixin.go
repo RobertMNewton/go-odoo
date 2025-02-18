@@ -2,7 +2,6 @@ package odoo
 
 // FormatAddressMixin represents format.address.mixin model.
 type FormatAddressMixin struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateFormatAddressMixin(fam *FormatAddressMixin) (int64, error
 	return ids[0], nil
 }
 
-// CreateFormatAddressMixins creates a new format.address.mixin model and returns its id.
+// CreateFormatAddressMixin creates a new format.address.mixin model and returns its id.
 func (c *Client) CreateFormatAddressMixins(fams []*FormatAddressMixin) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range fams {

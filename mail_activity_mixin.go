@@ -2,15 +2,19 @@ package odoo
 
 // MailActivityMixin represents mail.activity.mixin model.
 type MailActivityMixin struct {
-	LastUpdate           *Time      `xmlrpc:"__last_update,omitempty"`
-	ActivityDateDeadline *Time      `xmlrpc:"activity_date_deadline,omitempty"`
-	ActivityIds          *Relation  `xmlrpc:"activity_ids,omitempty"`
-	ActivityState        *Selection `xmlrpc:"activity_state,omitempty"`
-	ActivitySummary      *String    `xmlrpc:"activity_summary,omitempty"`
-	ActivityTypeId       *Many2One  `xmlrpc:"activity_type_id,omitempty"`
-	ActivityUserId       *Many2One  `xmlrpc:"activity_user_id,omitempty"`
-	DisplayName          *String    `xmlrpc:"display_name,omitempty"`
-	Id                   *Int       `xmlrpc:"id,omitempty"`
+	ActivityCalendarEventId     *Many2One  `xmlrpc:"activity_calendar_event_id,omitempty"`
+	ActivityDateDeadline        *Time      `xmlrpc:"activity_date_deadline,omitempty"`
+	ActivityExceptionDecoration *Selection `xmlrpc:"activity_exception_decoration,omitempty"`
+	ActivityExceptionIcon       *String    `xmlrpc:"activity_exception_icon,omitempty"`
+	ActivityIds                 *Relation  `xmlrpc:"activity_ids,omitempty"`
+	ActivityState               *Selection `xmlrpc:"activity_state,omitempty"`
+	ActivitySummary             *String    `xmlrpc:"activity_summary,omitempty"`
+	ActivityTypeIcon            *String    `xmlrpc:"activity_type_icon,omitempty"`
+	ActivityTypeId              *Many2One  `xmlrpc:"activity_type_id,omitempty"`
+	ActivityUserId              *Many2One  `xmlrpc:"activity_user_id,omitempty"`
+	DisplayName                 *String    `xmlrpc:"display_name,omitempty"`
+	Id                          *Int       `xmlrpc:"id,omitempty"`
+	MyActivityDateDeadline      *Time      `xmlrpc:"my_activity_date_deadline,omitempty"`
 }
 
 // MailActivityMixins represents array of mail.activity.mixin model.
@@ -36,7 +40,7 @@ func (c *Client) CreateMailActivityMixin(mam *MailActivityMixin) (int64, error) 
 	return ids[0], nil
 }
 
-// CreateMailActivityMixins creates a new mail.activity.mixin model and returns its id.
+// CreateMailActivityMixin creates a new mail.activity.mixin model and returns its id.
 func (c *Client) CreateMailActivityMixins(mams []*MailActivityMixin) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range mams {

@@ -2,14 +2,29 @@ package odoo
 
 // RatingMixin represents rating.mixin model.
 type RatingMixin struct {
-	LastUpdate         *Time     `xmlrpc:"__last_update,omitempty"`
-	DisplayName        *String   `xmlrpc:"display_name,omitempty"`
-	Id                 *Int      `xmlrpc:"id,omitempty"`
-	RatingCount        *Int      `xmlrpc:"rating_count,omitempty"`
-	RatingIds          *Relation `xmlrpc:"rating_ids,omitempty"`
-	RatingLastFeedback *String   `xmlrpc:"rating_last_feedback,omitempty"`
-	RatingLastImage    *String   `xmlrpc:"rating_last_image,omitempty"`
-	RatingLastValue    *Float    `xmlrpc:"rating_last_value,omitempty"`
+	DisplayName                  *String    `xmlrpc:"display_name,omitempty"`
+	HasMessage                   *Bool      `xmlrpc:"has_message,omitempty"`
+	Id                           *Int       `xmlrpc:"id,omitempty"`
+	MessageAttachmentCount       *Int       `xmlrpc:"message_attachment_count,omitempty"`
+	MessageFollowerIds           *Relation  `xmlrpc:"message_follower_ids,omitempty"`
+	MessageHasError              *Bool      `xmlrpc:"message_has_error,omitempty"`
+	MessageHasErrorCounter       *Int       `xmlrpc:"message_has_error_counter,omitempty"`
+	MessageHasSmsError           *Bool      `xmlrpc:"message_has_sms_error,omitempty"`
+	MessageIds                   *Relation  `xmlrpc:"message_ids,omitempty"`
+	MessageIsFollower            *Bool      `xmlrpc:"message_is_follower,omitempty"`
+	MessageNeedaction            *Bool      `xmlrpc:"message_needaction,omitempty"`
+	MessageNeedactionCounter     *Int       `xmlrpc:"message_needaction_counter,omitempty"`
+	MessagePartnerIds            *Relation  `xmlrpc:"message_partner_ids,omitempty"`
+	RatingAvg                    *Float     `xmlrpc:"rating_avg,omitempty"`
+	RatingAvgText                *Selection `xmlrpc:"rating_avg_text,omitempty"`
+	RatingCount                  *Int       `xmlrpc:"rating_count,omitempty"`
+	RatingIds                    *Relation  `xmlrpc:"rating_ids,omitempty"`
+	RatingLastFeedback           *String    `xmlrpc:"rating_last_feedback,omitempty"`
+	RatingLastImage              *String    `xmlrpc:"rating_last_image,omitempty"`
+	RatingLastText               *Selection `xmlrpc:"rating_last_text,omitempty"`
+	RatingLastValue              *Float     `xmlrpc:"rating_last_value,omitempty"`
+	RatingPercentageSatisfaction *Float     `xmlrpc:"rating_percentage_satisfaction,omitempty"`
+	WebsiteMessageIds            *Relation  `xmlrpc:"website_message_ids,omitempty"`
 }
 
 // RatingMixins represents array of rating.mixin model.
@@ -35,7 +50,7 @@ func (c *Client) CreateRatingMixin(rm *RatingMixin) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateRatingMixins creates a new rating.mixin model and returns its id.
+// CreateRatingMixin creates a new rating.mixin model and returns its id.
 func (c *Client) CreateRatingMixins(rms []*RatingMixin) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range rms {

@@ -2,7 +2,6 @@ package odoo
 
 // IrHttp represents ir.http model.
 type IrHttp struct {
-	LastUpdate  *Time   `xmlrpc:"__last_update,omitempty"`
 	DisplayName *String `xmlrpc:"display_name,omitempty"`
 	Id          *Int    `xmlrpc:"id,omitempty"`
 }
@@ -30,7 +29,7 @@ func (c *Client) CreateIrHttp(ih *IrHttp) (int64, error) {
 	return ids[0], nil
 }
 
-// CreateIrHttps creates a new ir.http model and returns its id.
+// CreateIrHttp creates a new ir.http model and returns its id.
 func (c *Client) CreateIrHttps(ihs []*IrHttp) ([]int64, error) {
 	var vv []interface{}
 	for _, v := range ihs {
